@@ -1,24 +1,24 @@
-# Define a imagem base para a construção, usando a imagem Alpine do Golang 1.19.13.
+# Set the base image for the build, using the Golang Alpine image 1.19.13.
 FROM golang:1.19.13-alpine AS builder
 
-# Define o diretório de trabalho no contêiner para a construção.
+# Set the working directory in the container for the build.
 WORKDIR /go/src/app
 
-# Copia todo o conteúdo do diretório local para o diretório de trabalho no contêiner.
+# Copy all content from the local directory to the working directory in the container.
 COPY . .
 
-# Inicializa um módulo Go (se já não existir) e compila o código-fonte em um executável chamado 'server'.
+# Initialize a Go module (if it doesn't already exist) and compile the source code into an executable named 'server'.
 RUN go mod init && \
     go build -o server .
 
-# Define uma nova etapa baseada em uma imagem vazia ("scratch") para criar uma imagem mínima.
+# Define a new stage based on an empty ("scratch") image to create a minimal image.
 FROM scratch
 
-# Copia o executável 'server' gerado na etapa anterior para o diretório de trabalho no contêiner final.
+# Copy the 'server' executable generated in the previous stage to the working directory in the final container.
 COPY --from=builder /go/src/app/server /go/src/app/server
 
-# Expõe a porta 80 para que o contêiner possa receber conexões na porta 80.
+# Expose port 80 so that the container can receive connections on port 80.
 EXPOSE 80
 
-# Define o comando a ser executado quando o contêiner for iniciado, que é o executável 'server'.
+# Define the command to be executed when the container is started, which is the 'server' executable.
 CMD ["/go/src/app/server"]
