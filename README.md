@@ -1,9 +1,9 @@
-# Desafio Golang
+# Golang Challenge
 
-Este desafio consiste em criar uma imagem Docker que tenha menos de 2MB e seja capaz de executar o Golang fazendo exibir a mensagem: Full Cycle Rocks!!
+This challenge involves creating a Docker image that is less than 2MB in size and is capable of running Golang, displaying the message: Full Cycle Rocks!!
 
-## 🚀 Link para a imagem Docker no Docker Hub
+## 🚀 Link to the Docker Image on Docker Hub
 
-Meu usuário no Docker Hub pode ser encontrado como **dancastilho**
+My username on Docker Hub can be found as **dancastilho**
 
-- [DockerHub](https://hub.docker.com/r/dancastilho/fullcycle) - O link da minha imagem Docker no Docker Hub
+- [DockerHub](https://hub.docker.com/r/dancastilho/fullcycle) - This is the link to my docker image on Docker Hub
